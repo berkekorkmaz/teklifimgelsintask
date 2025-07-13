@@ -1,0 +1,1185 @@
+{
+	"info": {
+		"_postman_id": "car-rental-api",
+		"name": "Car Rental API",
+		"description": "A comprehensive collection for the Car Rental Platform API with authentication, car management, rental operations, pricing, and statistics.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"newuser\",\n    \"password\": \"password123\",\n    \"role\": \"user\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"newuser\",\n    \"password\": \"password123\",\n    \"role\": \"user\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User registered successfully\",\n    \"user_id\": 1,\n    \"username\": \"newuser\",\n    \"role\": \"user\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Register Merchant",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"newmerchant\",\n    \"password\": \"password123\",\n    \"role\": \"merchant\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					}
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"newuser\",\n    \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"newuser\",\n    \"password\": \"password123\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Login successful\",\n    \"user_id\": 1,\n    \"username\": \"newuser\",\n    \"role\": \"user\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Car Management",
+			"item": [
+				{
+					"name": "Add Car (Merchant Only)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{merchant_username}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{merchant_password}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"brand\": \"Toyota\",\n    \"model\": \"Corolla\",\n    \"year\": 2022,\n    \"daily_rate\": 75.00\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/cars",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cars"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"brand\": \"Toyota\",\n    \"model\": \"Corolla\",\n    \"year\": 2022,\n    \"daily_rate\": 75.00\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/cars",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cars"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Car added successfully\",\n    \"car_id\": 1,\n    \"brand\": \"Toyota\",\n    \"model\": \"Corolla\",\n    \"year\": 2022,\n    \"daily_rate\": 75.0,\n    \"available\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "List All Cars",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cars",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cars"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/cars",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cars"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"brand\": \"Toyota\",\n        \"model\": \"Corolla\",\n        \"year\": 2020,\n        \"available\": true,\n        \"merchant_id\": 1,\n        \"daily_rate\": 75.00\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "List Cars with Filters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cars?brand=Toyota&available=true",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cars"
+							],
+							"query": [
+								{
+									"key": "brand",
+									"value": "Toyota"
+								},
+								{
+									"key": "available",
+									"value": "true"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Car Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cars/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cars",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/cars/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cars",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"brand\": \"Toyota\",\n    \"model\": \"Corolla\",\n    \"year\": 2020,\n    \"available\": true,\n    \"merchant_id\": 1,\n    \"daily_rate\": 75.00\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Car (Merchant Only)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{merchant_username}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{merchant_password}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"brand\": \"Toyota\",\n    \"model\": \"Corolla\",\n    \"year\": 2021,\n    \"available\": false\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/cars/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cars",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"brand\": \"Toyota\",\n    \"model\": \"Corolla\",\n    \"year\": 2021,\n    \"available\": false\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/cars/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cars",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Car updated\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Car (Merchant Only)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{merchant_username}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{merchant_password}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cars/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cars",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/cars/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cars",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Car deleted\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Car Pricing",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cars/1/pricing",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cars",
+								"1",
+								"pricing"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/cars/1/pricing",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cars",
+										"1",
+										"pricing"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"car_id\": 1,\n    \"brand\": \"Toyota\",\n    \"model\": \"Corolla\",\n    \"year\": 2022,\n    \"daily_rate\": 75.0,\n    \"available\": true,\n    \"pricing_info\": {\n        \"daily_rate\": 75.0,\n        \"hourly_rate\": 3.125,\n        \"weekly_rate\": 525.0,\n        \"monthly_rate\": 2250.0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Car Rental History (Merchant Only)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{merchant_username}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{merchant_password}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cars/1/rentals?page=1&per_page=5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cars",
+								"1",
+								"rentals"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/cars/1/rentals?page=1&per_page=5",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cars",
+										"1",
+										"rentals"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "per_page",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"car_id\": 1,\n    \"car_info\": {\"brand\": \"Toyota\", \"model\": \"Corolla\", \"year\": 2022},\n    \"rentals\": [\n        {\n            \"id\": 1,\n            \"car_id\": 1,\n            \"rented_at\": \"2024-06-13T12:00:00.000Z\",\n            \"returned_at\": null,\n            \"total_fee\": null,\n            \"daily_rate\": 75.0,\n            \"duration_hours\": null,\n            \"duration_days\": null,\n            \"is_active\": true\n        }\n    ],\n    \"pagination\": {\"page\": 1, \"per_page\": 5, \"total\": 1, \"pages\": 1}\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Rental System",
+			"item": [
+				{
+					"name": "Rent Car (User Only)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user_username}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{user_password}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"car_id\": 1\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/rentals",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"rentals"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"car_id\": 1\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/rentals",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"rentals"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Car rented successfully\",\n    \"rental_id\": 1,\n    \"car_id\": 1,\n    \"daily_rate\": 75.0,\n    \"rented_at\": \"2024-06-13T12:00:00.000Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Return Car (User Only)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user_username}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{user_password}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/rentals/return",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"rentals",
+								"return"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/rentals/return",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"rentals",
+										"return"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Car returned successfully\",\n    \"rental_id\": 1,\n    \"total_fee\": 75.0,\n    \"duration_hours\": 25.0,\n    \"duration_days\": 2.0,\n    \"returned_at\": \"2024-06-14T13:00:00.000Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "List User Rentals (Paginated)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user_username}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{user_password}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/rentals?page=1&per_page=5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"rentals"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/rentals?page=1&per_page=5",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"rentals"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "per_page",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"rentals\": [\n        {\n            \"id\": 1,\n            \"car_id\": 1,\n            \"rented_at\": \"2024-06-13T12:00:00.000Z\",\n            \"returned_at\": null,\n            \"total_fee\": null,\n            \"daily_rate\": 75.0,\n            \"duration_hours\": null,\n            \"duration_days\": null,\n            \"is_active\": true\n        }\n    ],\n    \"pagination\": {\"page\": 1, \"per_page\": 5, \"total\": 1, \"pages\": 1}\n}"
+						}
+					]
+				},
+				{
+					"name": "Rental History (User)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user_username}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{user_password}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/rentals/history?page=1&per_page=5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"rentals",
+								"history"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/rentals/history?page=1&per_page=5",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"rentals",
+										"history"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "per_page",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"rentals\": [\n        {\n            \"id\": 1,\n            \"car_id\": 1,\n            \"rented_at\": \"2024-06-13T12:00:00.000Z\",\n            \"returned_at\": null,\n            \"total_fee\": null,\n            \"daily_rate\": 75.0,\n            \"duration_hours\": null,\n            \"duration_days\": null,\n            \"is_active\": true\n        }\n    ],\n    \"pagination\": {\"page\": 1, \"per_page\": 5, \"total\": 1, \"pages\": 1}\n}"
+						}
+					]
+				},
+				{
+					"name": "Active Rental (User)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user_username}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{user_password}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/rentals/active",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"rentals",
+								"active"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/rentals/active",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"rentals",
+										"active"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"car_id\": 1,\n    \"car_brand\": \"Toyota\",\n    \"car_model\": \"Corolla\",\n    \"rented_at\": \"2024-06-13T12:00:00.000Z\",\n    \"returned_at\": null,\n    \"total_fee\": null,\n    \"daily_rate\": 75.0,\n    \"duration_hours\": null,\n    \"duration_days\": null,\n    \"is_active\": true\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User Statistics",
+			"item": [
+				{
+					"name": "Get User Stats",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{user_username}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{user_password}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/stats",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"stats"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/users/stats",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										"stats"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user_id\": 1,\n    \"username\": \"user1\",\n    \"role\": \"user\",\n    \"total_rentals\": 2,\n    \"active_rentals\": 0,\n    \"completed_rentals\": 2,\n    \"total_spent\": 150.0\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Health Check",
+			"item": [
+				{
+					"name": "API Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Car Rental API is running.\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:5020",
+			"type": "string"
+		},
+		{
+			"key": "merchant_username",
+			"value": "merchant1",
+			"type": "string"
+		},
+		{
+			"key": "merchant_password",
+			"value": "merchantpass",
+			"type": "string"
+		},
+		{
+			"key": "merchant_username",
+			"value": "merchant2",
+			"type": "string"
+		},
+		{
+			"key": "merchant_password",
+			"value": "merchantpass2",
+			"type": "string"
+		},
+		{
+			"key": "user_username",
+			"value": "user1",
+			"type": "string"
+		},
+		{
+			"key": "user_password",
+			"value": "userpass",
+			"type": "string"
+		}
+	]
+} 

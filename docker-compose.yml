@@ -1,0 +1,28 @@
+version: '3.9'
+services:
+  web:
+    build: .
+    command: flask run --host=0.0.0.0
+    volumes:
+      - ./app:/app/app
+    ports:
+      - "5020:5000"
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=app:create_app
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/car_rental
+    depends_on:
+      - db
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: car_rental
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata: 
